@@ -40,7 +40,9 @@ const TAGS = {
 // All annual observations for a tag, keyed by period end. Duration facts
 // must span roughly a year; the most recent filing for a period wins.
 function annualSeries(facts, tag, { duration }) {
-  const node = (facts["us-gaap"] && facts["us-gaap"][tag]) || (facts["dei"] && facts["dei"][tag]);
+  // companyfacts nests taxonomies under `facts`: { cik, entityName, facts: { "us-gaap": {...}, dei: {...} } }
+  const root = facts.facts || facts;
+  const node = (root["us-gaap"] && root["us-gaap"][tag]) || (root["dei"] && root["dei"][tag]);
   if (!node) return null;
   const unitKey = Object.keys(node.units).find(u => u === "USD" || u === "shares") || Object.keys(node.units)[0];
   const obs = node.units[unitKey];

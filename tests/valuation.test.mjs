@@ -58,7 +58,7 @@ const yr = (fy, val, extra = {}) => ({ start: `${fy - 1}-10-01`, end: `${fy}-09-
 const inst = (fy, val) => ({ end: `${fy}-09-30`, val, form: "10-K", filed: `${fy}-11-01`, fy, fp: "FY" });
 const facts = {
   cik: 1, entityName: "Synthetic Test Co",
-  "us-gaap": {
+  facts: { "us-gaap": {
     ...fact("RevenueFromContractWithCustomerExcludingAssessedTax", [2021, 2022, 2023, 2024, 2025].map(y => yr(y, 100 + (y - 2021) * 10))),
     ...fact("OperatingIncomeLoss", [2021, 2022, 2023, 2024, 2025].map(y => yr(y, 20 + (y - 2021) * 2))),
     ...fact("IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest", [2024, 2025].map(y => yr(y, 20))),
@@ -72,7 +72,7 @@ const facts = {
     ...fact("WeightedAverageNumberOfDilutedSharesOutstanding", [2024, 2025].map(y => yr(y, 1000)), "shares"),
     // A quarterly row that must be ignored (duration ≈ 90 days)
     ...fact("Revenues", [{ start: "2025-07-01", end: "2025-09-30", val: 999, form: "10-Q", fy: 2025, fp: "Q3" }])
-  }
+  } }
 };
 
 test("extractFinancials uses tag fallbacks, ignores quarters, and reports quality notes", () => {
