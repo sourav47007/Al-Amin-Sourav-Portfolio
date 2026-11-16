@@ -59,6 +59,7 @@ const inst = (fy, val) => ({ end: `${fy}-09-30`, val, form: "10-K", filed: `${fy
 const facts = {
   cik: 1, entityName: "Synthetic Test Co",
   facts: { "us-gaap": {
+    ...fact("Revenues", [2019, 2020, 2021].map(y => yr(y, 80 + (y - 2019) * 10))),           // old tag, stops in 2021
     ...fact("RevenueFromContractWithCustomerExcludingAssessedTax", [2021, 2022, 2023, 2024, 2025].map(y => yr(y, 100 + (y - 2021) * 10))),
     ...fact("OperatingIncomeLoss", [2021, 2022, 2023, 2024, 2025].map(y => yr(y, 20 + (y - 2021) * 2))),
     ...fact("IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest", [2024, 2025].map(y => yr(y, 20))),
@@ -85,6 +86,7 @@ test("extractFinancials uses tag fallbacks, ignores quarters, and reports qualit
   assert.equal(fin.years[4].shares, 1000);
   close(fin.taxRate, 0.2, 1e-12);
   assert.ok(fin.quality.some(q => q.startsWith("revenue: used tag")));
+  assert.equal(fin.years[0].end, "2021-09-30");   // the five most recent, from the newer tag
   assert.ok(fin.quality.some(q => q.startsWith("D&A: used tag")));
   const b = baseInputs(fin);
   close(b.margin, 0.2, 1e-12);

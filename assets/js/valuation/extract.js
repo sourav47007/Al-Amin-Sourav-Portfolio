@@ -61,12 +61,32 @@ function annualSeries(facts, tag, { duration }) {
   return { unit: unitKey, byEnd };
 }
 
-function firstAvailable(facts, tags, opts) {
+// Pick the tag whose data reaches the most recent period end, then fill any
+// earlier period ends it lacks from the other candidate tags (companies
+// switch tags over the years, e.g. "Revenues" → "RevenueFromContract…").
+function firstAvailable(facts, tags, opts, quality = null, field = "") {
+  const found = [];
   for (const t of tags) {
     const s = annualSeries(facts, t, opts);
-    if (s && s.byEnd.size) return { tag: t, ...s };
+    if (s && s.byEnd.size) found.push({ tag: t, ...s, latest: [...s.byEnd.keys()].sort().pop() });
   }
-  return null;
+  if (!found.length) return null;
+  found.sort((a, b) => (a.latest < b.latest ? 1 : a.latest > b.latest ? -1 : b.byEnd.size - a.byEnd.size));
+  const primary = found[0];
+  const merged = new Map(primary.byEnd);
+  const filledFrom = [];
+  for (const other of found.slice(1)) {
+    for (const [end, o] of other.byEnd) {
+      if (merged.has(end)) continue;
+      // Avoid near-duplicate period ends (52/53-week drift) already covered.
+      const t = Date.parse(end);
+      if ([...merged.keys()].some(e => Math.abs(Date.parse(e) - t) < 40 * DAY)) continue;
+      merged.set(end, o);
+      if (!filledFrom.includes(other.tag)) filledFrom.push(other.tag);
+    }
+  }
+  if (quality && filledFrom.length) quality.push(`${field}: earlier years filled from ${filledFrom.join(", ")}`);
+  return { tag: primary.tag, unit: primary.unit, byEnd: merged };
 }
 
 // Value at a given end date, or the nearest end within ±40 days (fiscal
@@ -85,17 +105,18 @@ function at(series, end) {
 
 export function extractFinancials(facts, { ticker = "", maxYears = 5, now = new Date() } = {}) {
   const quality = [];
-  const rev = firstAvailable(facts, TAGS.revenue, { duration: true });
+  const rev = firstAvailable(facts, TAGS.revenue, { duration: true }, quality, "revenue");
   if (!rev) throw new Error("No annual revenue found under any known XBRL tag.");
   if (rev.tag !== TAGS.revenue[0]) quality.push(`revenue: used tag ${rev.tag}`);
+  // (quality notes about filled years were added by firstAvailable)
 
   const ends = [...rev.byEnd.keys()].sort().slice(-maxYears);
   const opInc = firstAvailable(facts, TAGS.operatingIncome, { duration: true });
   const pretax = firstAvailable(facts, TAGS.pretax, { duration: true });
   const intExp = firstAvailable(facts, TAGS.interestExpense, { duration: true });
   const tax = firstAvailable(facts, TAGS.tax, { duration: true });
-  const da = firstAvailable(facts, TAGS.da, { duration: true });
-  const capex = firstAvailable(facts, TAGS.capex, { duration: true });
+  const da = firstAvailable(facts, TAGS.da, { duration: true }, quality, "D&A");
+  const capex = firstAvailable(facts, TAGS.capex, { duration: true }, quality, "capex");
   const ca = firstAvailable(facts, TAGS.currentAssets, { duration: false });
   const cl = firstAvailable(facts, TAGS.currentLiabilities, { duration: false });
   const cash = firstAvailable(facts, TAGS.cash, { duration: false });
