@@ -20,7 +20,7 @@ export const site = {
 
   // Absolute URL of the deployed site, no trailing slash.
   // Used for Open Graph tags and share links. Change after you deploy.
-  url: "https://sourav.vercel.app",
+  url: "https://al-amin-sourav-portfolio.vercel.app",
 
   // --- Home page -------------------------------------------------------
   // 2–3 lines. This is a draft written from your CV; rewrite it in your own words.
