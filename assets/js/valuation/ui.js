@@ -154,11 +154,13 @@ function params() {
   };
 }
 
+function persist() { const { _fromUrl, ...rest } = st; writeState(rest, defaults); }
+
 function update() {
   const p = params();
   const out = $("#output");
   DRIVERS.forEach(d => { const el = $(`#sv-${d.k}`); if (el) el.textContent = d.pct ? `${st[d.k]}%` : st[d.k]; });
-  if (!p) { out.innerHTML = `<p class="muted">Load a ticker, pick a snapshot, or enter numbers manually to start.</p>`; writeState(st, defaults); return; }
+  if (!p) { out.innerHTML = `<p class="muted">Load a ticker, pick a snapshot, or enter numbers manually to start.</p>`; persist(); return; }
   const r = dcf(p);
   const price = Number(st.price) || 0;
   const vps = r.perShare;
@@ -196,7 +198,7 @@ function update() {
       <tr><td>+ cash − debt</td><td colspan="5"></td><td class="num">${fmtCompact((p.cash || 0) - (p.debt || 0))}</td></tr>
       <tr><td>Equity value</td><td colspan="5"></td><td class="num">${fmtCompact(r.equityValue)}</td></tr>
       </tbody></table></div></details>`;
-  writeState(st, defaults);
+  persist();
 }
 
 function gauge(vps, price) {
@@ -242,11 +244,12 @@ function showTab(name) {
   st.tab = name;
   $$(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === name ? "true" : "false"));
   $$("[data-panel]").forEach(p => { p.hidden = p.dataset.panel !== name; });
-  writeState(st, defaults);
+  persist();
 }
 
 async function init() {
-  st._fromUrl = location.hash.length > 1;
+  // Only treat drivers as user-set when a shared link actually carries them.
+  st._fromUrl = /(^|[#&])(growth|margin|s2c|tax|rf|erp|beta|kd|dw|tg)=/.test(location.hash);
   $("#ticker").value = st.ticker;
   $("#price").value = st.price || "";
   $("#asof").value = st.asof || "";
