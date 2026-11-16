@@ -1,0 +1,560 @@
+{
+  "counts": {
+    "clean": 41,
+    "noRef": 4,
+    "cents": 2,
+    "typo": 3,
+    "partial": 2,
+    "batch": 1,
+    "dup": 1,
+    "aged": 4,
+    "strayPayments": 2
+  },
+  "expected": [
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1001"
+      ],
+      "b": [
+        "TXN500100"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1002"
+      ],
+      "b": [
+        "TXN500101"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1003"
+      ],
+      "b": [
+        "TXN500102"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1004"
+      ],
+      "b": [
+        "TXN500103"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1005"
+      ],
+      "b": [
+        "TXN500104"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1006"
+      ],
+      "b": [
+        "TXN500105"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1007"
+      ],
+      "b": [
+        "TXN500106"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1008"
+      ],
+      "b": [
+        "TXN500107"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1009"
+      ],
+      "b": [
+        "TXN500108"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1010"
+      ],
+      "b": [
+        "TXN500109"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1011"
+      ],
+      "b": [
+        "TXN500110"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1012"
+      ],
+      "b": [
+        "TXN500111"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1013"
+      ],
+      "b": [
+        "TXN500112"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1014"
+      ],
+      "b": [
+        "TXN500113"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1015"
+      ],
+      "b": [
+        "TXN500114"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1016"
+      ],
+      "b": [
+        "TXN500115"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1017"
+      ],
+      "b": [
+        "TXN500116"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1018"
+      ],
+      "b": [
+        "TXN500117"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1019"
+      ],
+      "b": [
+        "TXN500118"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1020"
+      ],
+      "b": [
+        "TXN500119"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1021"
+      ],
+      "b": [
+        "TXN500120"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1022"
+      ],
+      "b": [
+        "TXN500121"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1023"
+      ],
+      "b": [
+        "TXN500122"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1024"
+      ],
+      "b": [
+        "TXN500123"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1025"
+      ],
+      "b": [
+        "TXN500124"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1026"
+      ],
+      "b": [
+        "TXN500125"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1027"
+      ],
+      "b": [
+        "TXN500126"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1028"
+      ],
+      "b": [
+        "TXN500127"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1029"
+      ],
+      "b": [
+        "TXN500128"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1030"
+      ],
+      "b": [
+        "TXN500129"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1031"
+      ],
+      "b": [
+        "TXN500130"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1032"
+      ],
+      "b": [
+        "TXN500131"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1033"
+      ],
+      "b": [
+        "TXN500132"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1034"
+      ],
+      "b": [
+        "TXN500133"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1035"
+      ],
+      "b": [
+        "TXN500134"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1036"
+      ],
+      "b": [
+        "TXN500135"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1037"
+      ],
+      "b": [
+        "TXN500136"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1038"
+      ],
+      "b": [
+        "TXN500137"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1039"
+      ],
+      "b": [
+        "TXN500138"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1040"
+      ],
+      "b": [
+        "TXN500139"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1041"
+      ],
+      "b": [
+        "TXN500140"
+      ],
+      "why": "same reference and amount"
+    },
+    {
+      "rule": 2,
+      "a": [
+        "INV-2026-1042"
+      ],
+      "b": [
+        "TXN500141"
+      ],
+      "why": "no reference; amount and date agree"
+    },
+    {
+      "rule": 2,
+      "a": [
+        "INV-2026-1043"
+      ],
+      "b": [
+        "TXN500142"
+      ],
+      "why": "no reference; amount and date agree"
+    },
+    {
+      "rule": 2,
+      "a": [
+        "INV-2026-1044"
+      ],
+      "b": [
+        "TXN500143"
+      ],
+      "why": "no reference; amount and date agree"
+    },
+    {
+      "rule": 2,
+      "a": [
+        "INV-2026-1045"
+      ],
+      "b": [
+        "TXN500144"
+      ],
+      "why": "no reference; amount and date agree"
+    },
+    {
+      "rule": 2,
+      "a": [
+        "INV-2026-1046"
+      ],
+      "b": [
+        "TXN500145"
+      ],
+      "why": "amount 3 cents short"
+    },
+    {
+      "rule": 2,
+      "a": [
+        "INV-2026-1047"
+      ],
+      "b": [
+        "TXN500146"
+      ],
+      "why": "amount 3 cents short"
+    },
+    {
+      "rule": 3,
+      "a": [
+        "INV-2026-1048"
+      ],
+      "b": [
+        "TXN500147"
+      ],
+      "why": "reference typed as INV-2O26-1048"
+    },
+    {
+      "rule": 3,
+      "a": [
+        "INV-2026-1049"
+      ],
+      "b": [
+        "TXN500148"
+      ],
+      "why": "reference typed as INV-2026-1094"
+    },
+    {
+      "rule": 3,
+      "a": [
+        "INV-2026-1050"
+      ],
+      "b": [
+        "TXN500149"
+      ],
+      "why": "reference typed as INV-2O26-1050"
+    },
+    {
+      "rule": 4,
+      "a": [
+        "INV-2026-1051"
+      ],
+      "b": [
+        "TXN500150",
+        "TXN500151"
+      ],
+      "why": "two partial payments"
+    },
+    {
+      "rule": 4,
+      "a": [
+        "INV-2026-1052"
+      ],
+      "b": [
+        "TXN500152",
+        "TXN500153"
+      ],
+      "why": "two partial payments"
+    },
+    {
+      "rule": 4,
+      "a": [
+        "INV-2026-1053",
+        "INV-2026-1054",
+        "INV-2026-1055"
+      ],
+      "b": [
+        "TXN500154"
+      ],
+      "why": "one payment settles three invoices"
+    },
+    {
+      "rule": 1,
+      "a": [
+        "INV-2026-1056"
+      ],
+      "b": [
+        "TXN500155"
+      ],
+      "why": "paid once; the second payment is a duplicate",
+      "duplicate": "TXN500156"
+    }
+  ]
+}

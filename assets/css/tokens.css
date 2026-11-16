@@ -1,0 +1,91 @@
+/* tokens.css — colours, fonts, spacing, both themes.
+   Change a colour here and it changes everywhere. */
+
+@font-face {
+  font-family: "Departure Mono";
+  src: url("../fonts/DepartureMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/InterVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* type */
+  --font-pixel: "Departure Mono", "Courier New", ui-monospace, monospace;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body-size: 16.5px;
+  --body-lh: 1.6;
+
+  /* spacing: 8px base */
+  --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px; --s5: 40px; --s6: 48px; --s8: 64px;
+  --max: 960px;
+  --max-text: 640px;
+
+  /* borders */
+  --bw: 2px;
+  --shadow-offset: 3px;
+
+  /* light theme (default) */
+  --paper: #F7F5EF;
+  --ink: #111111;
+  --grid: #E4E0D6;
+  --muted: #5B5850;
+  --surface: #FFFFFF;
+  --up: #0B8F4D;
+  --down: #D23B2F;
+  --amber: #F2A900;
+  --amber-ink: #111111;
+  --accent: #0B8F4D;
+  --accent-ink: #FFFFFF;
+  --focus: #0B8F4D;
+  --heat-low: #F7F5EF;
+  --heat-high: #0B8F4D;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --paper: #0D0F0E;
+  --ink: #E8E6DF;
+  --grid: #26302A;
+  --muted: #A3A69C;
+  --surface: #141816;
+  --up: #3FD47F;        /* lighter so it passes AA on black */
+  --down: #FF6B5E;
+  --amber: #F2A900;
+  --amber-ink: #0D0F0E;
+  --accent: #3FD47F;    /* phosphor green */
+  --accent-ink: #0D0F0E;
+  --focus: #3FD47F;
+  --heat-low: #0D0F0E;
+  --heat-high: #3FD47F;
+  color-scheme: dark;
+}
+
+/* Respect the OS setting until the visitor picks a theme. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --paper: #0D0F0E;
+    --ink: #E8E6DF;
+    --grid: #26302A;
+    --muted: #A3A69C;
+    --surface: #141816;
+    --up: #3FD47F;
+    --down: #FF6B5E;
+    --amber: #F2A900;
+    --amber-ink: #0D0F0E;
+    --accent: #3FD47F;
+    --accent-ink: #0D0F0E;
+    --focus: #3FD47F;
+    --heat-low: #0D0F0E;
+    --heat-high: #3FD47F;
+    color-scheme: dark;
+  }
+}

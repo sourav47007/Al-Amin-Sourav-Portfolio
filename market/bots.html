@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the bots think · Make Me a Market</title>
+<meta name="description" content="The exact rules the bots in Make Me a Market follow, so you can learn from them.">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+</head>
+<body>
+<main>
+  <h1>How the bots think</h1>
+  <p class="lead">Fair play means you can read the bots' rules. Here they are, exactly as coded in <code>engine.js</code>.</p>
+
+  <h2>Public information</h2>
+  <p>Before each quote, everyone can compute the <em>public expected value</em>: the sum of the revealed items plus the expectation of each hidden one. For dice that expectation is 3.5. For cards it is the mean of the cards still in the deck. If news has arrived about a card, that card's expectation is the mean over the allowed range only.</p>
+
+  <h2>The informed bot</h2>
+  <ul>
+    <li>It has seen the <b>last</b> item to be revealed. Its estimate is the public expected value with that item's expectation replaced by its true value.</li>
+    <li>It buys at your ask if its estimate is above <code>ask + 0.25</code>; it sells at your bid if its estimate is below <code>bid − 0.25</code>; otherwise it passes.</li>
+    <li>Once the item it knows has been revealed, it has no edge and simply uses the public expected value.</li>
+  </ul>
+  <p>So the informed bot is where adverse selection comes from: when it trades, the truth is more likely to be against you. Its edge is largest at the start and shrinks as items are revealed.</p>
+
+  <h2>The noise bot</h2>
+  <ul>
+    <li>It has no private information. Its estimate is the public expected value plus random noise: a normal draw scaled by 1.2 × the standard deviation of the remaining uncertainty (at least 1 point).</li>
+    <li>It buys if its estimate is above your ask and sells if it is below your bid, with no margin.</li>
+  </ul>
+  <p>The noise bot is where spread capture comes from: on average it pays you half the spread for nothing.</p>
+
+  <h2>Order of events in a step</h2>
+  <ol>
+    <li>You post a quote (checked against the maximum spread and, at level 4, the position limit).</li>
+    <li>Bots act in order: informed first, then noise. Each trades at most one unit.</li>
+    <li>The next item is revealed. At levels 3 and 4, news about the last card arrives after the first reveal.</li>
+  </ol>
+
+  <h2>What this teaches</h2>
+  <p>Quote around the expected value, not around the last price. Widen when uncertainty is high and when you suspect the counterparty knows more. Skew your quote to reduce inventory: if you are long, lower both prices so you attract buyers. The end-of-game breakdown in teaching mode shows whether your losses came from being picked off or from carrying inventory into a bad reveal.</p>
+
+  <p><a class="btn" href="/market">Back to the game</a></p>
+</main>
+<script type="module" src="/assets/js/site.js"></script>
+</body>
+</html>
